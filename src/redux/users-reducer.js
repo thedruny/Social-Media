@@ -1,10 +1,9 @@
-import React from 'react';
-import s from './Users.module.css'
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = "SET_USERS"
 
-let Users = (props) => {
-
-    props.setUsers([
-
+let initialState = {
+    users: [
         {
             id: 1,
             photoUrl: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/79734556_773007619868345_7658556988103589888_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=P95JKNDm0doAX-gRa-5&oh=2c34ee00fa4bcc72aee14fb421c8cc74&oe=5E9F18D1',
@@ -49,34 +48,45 @@ let Users = (props) => {
                 country: 'Ukraine'
             }
         }
-    ])
-
-    return <div>
-        {
-            props.users.map(u => <div key={u.id} className={s.postsBlock}>
-                <span>
-                    <div>
-                        <img src={u.photoUrl} alt={'avatar'} className={s.avatar} />
-                    </div>
-                    <div>
-                        {u.followed
-                            ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                            : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
-                    </div>
-                </span>
-                <span>
-                    <span>
-                        <div>{u.fullName}</div>
-                        <div>{u.status}</div>
-                    </span>
-                    <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
-                    </span>
-                </span>
-            </div>)
-        }
-    </div>
+    ],
 };
 
-export default Users;
+const userReducer = (state = initialState, action) => {
+
+    switch (action.type) {
+
+        case FOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: true }
+                    }
+                    return u;
+                })
+            }
+        case UNFOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return { ...u, followed: false }
+                    }
+                    return u;
+                })
+            }
+        case SET_USERS:
+            return {
+                ...state,
+                users: [...state.users, ...action.users]
+            }
+        default:
+            return state;
+    }
+}
+
+export const followAC = (userId) => ({ type: FOLLOW, userId });
+export const unfollowAc = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsersAC = (users) => ({ type: SET_USERS, users })
+
+export default userReducer;
