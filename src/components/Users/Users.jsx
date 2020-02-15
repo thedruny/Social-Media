@@ -1,82 +1,46 @@
 import React from 'react';
 import s from './Users.module.css'
+import * as axios from 'axios';
+import userDefaultPhoto from '../../assets/image/user-man.png'
 
-let Users = (props) => {
+class Users extends React.Component {
 
-    props.setUsers([
+    constructor(props) {
+        super(props)
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            this.props.setUsers(response.data.items)
+        });
+    };
 
-        {
-            id: 1,
-            photoUrl: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/79734556_773007619868345_7658556988103589888_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=P95JKNDm0doAX-gRa-5&oh=2c34ee00fa4bcc72aee14fb421c8cc74&oe=5E9F18D1',
-            followed: true,
-            fullName: 'Andrey',
-            status: 'I\'m a boss!',
-            location: {
-                city: 'Kiev',
-                country: 'Ukraine'
-            }
-        },
-        {
-            id: 2,
-            photoUrl: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/79734556_773007619868345_7658556988103589888_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=P95JKNDm0doAX-gRa-5&oh=2c34ee00fa4bcc72aee14fb421c8cc74&oe=5E9F18D1',
-            followed: true,
-            fullName: 'Nikolay',
-            status: 'Sorry, but I\'m a boss too',
-            location: {
-                city: 'Kiev',
-                country: 'Ukraine'
-            }
-        },
-        {
-            id: 3,
-            photoUrl: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/79734556_773007619868345_7658556988103589888_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=P95JKNDm0doAX-gRa-5&oh=2c34ee00fa4bcc72aee14fb421c8cc74&oe=5E9F18D1',
-            followed: true,
-            fullName: 'Taras',
-            status: 'Hello World!',
-            location: {
-                city: 'Poltava',
-                country: 'Ukraine'
-            }
-        },
-        {
-            id: 4,
-            photoUrl: 'https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/79734556_773007619868345_7658556988103589888_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=P95JKNDm0doAX-gRa-5&oh=2c34ee00fa4bcc72aee14fb421c8cc74&oe=5E9F18D1',
-            followed: false,
-            fullName: 'Denis',
-            status: 'I\'m a Boss!',
-            location: {
-                city: 'Kharkiv',
-                country: 'Ukraine'
-            }
-        }
-    ])
+    render() {
 
-    return <div>
-        {
-            props.users.map(u => <div key={u.id} className={s.postsBlock}>
-                <span>
-                    <div>
-                        <img src={u.photoUrl} alt={'avatar'} className={s.avatar} />
-                    </div>
-                    <div>
-                        {u.followed
-                            ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                            : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
-                    </div>
-                </span>
-                <span>
+        return <div>
+            {
+                this.props.users.map(u => <div key={u.id} className={s.postsBlock}>
                     <span>
-                        <div>{u.fullName}</div>
-                        <div>{u.status}</div>
+                        <div>
+                            <img src={u.photos.small != null ? u.photos.small : userDefaultPhoto} alt={'avatar'} className={s.avatar} />
+                        </div>
+                        <div>
+                            {u.followed
+                                ? <button onClick={() => { this.props.unfollow(u.id) }}>Unfollow</button>
+                                : <button onClick={() => { this.props.follow(u.id) }}>Follow</button>}
+                        </div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <span>
+                            <div>{u.name}</div>
+                            <div>{u.status}</div>
+                        </span>
+                        <span>
+                            <div>{'u.location.country'}</div>
+                            <div>{'u.location.city'}</div>
+                        </span>
                     </span>
-                </span>
-            </div>)
-        }
-    </div>
-};
+                </div>)
+            }
+        </div>
+    }
+}
 
-export default Users;
+export default Users; 
