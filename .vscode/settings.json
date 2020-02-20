@@ -7,5 +7,7 @@
         "taras",
         "tree",
         "unfollow"
-    ]
+    ],
+    "editor.tabSize": 6,
+    "editor.renderLineHighlight": "all"
 }

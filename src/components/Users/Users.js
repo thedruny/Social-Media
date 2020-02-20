@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './Users.module.css';
-
 import userDefaultPhoto from '../../assets/image/user-man.png';
-
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { NavLink } from 'react-router-dom';
 
 let Users = (props) => {
 
@@ -27,12 +28,14 @@ let Users = (props) => {
             props.users.map(u => <div key={u.id} className={s.postsBlock}>
                 <span>
                     <div>
-                        <img src={u.photos.small != null ? u.photos.small : userDefaultPhoto} alt={'avatar'} className={s.avatar} />
+                        <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small != null ? u.photos.small : userDefaultPhoto} alt={'avatar'} className={s.avatar} />
+                        </NavLink>
                     </div>
                     <div>
                         {u.followed
-                            ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                            : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
+                            ? <Button variant="danger" onClick={() => { props.unfollow(u.id) }}>Unfollow</Button>
+                            : <Button variant="primary" onClick={() => { props.follow(u.id) }}>Follow</Button>}
                     </div>
                 </span>
                 <span>
