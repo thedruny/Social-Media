@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Users.module.css';
 import userDefaultPhoto from '../../assets/image/user-man.png';
-import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import * as axios from "axios";
+import { usersAPI } from '../../api/api';
 
 let Users = (props) => {
 
@@ -15,9 +15,7 @@ let Users = (props) => {
         pages.push(i)
     }
 
-
     return < div >
-
         <div>
             {pages.map(p => {
                 return <span className={props.currentPage === p && s.selectedPages}
@@ -35,31 +33,13 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <Button variant="danger" onClick={() => {
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                onClick={() => { props.unfollow(u.id) }}
+                            >Unfollow</button>
 
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                        withCredentials: true,
-                                        headers: {"API-KEY": "877ec7b8-009a-44b1-9f94-b4b8ea47f202"}
-                                    })
-                                    .then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            props.unfollow(u.id);
-                                        };
-                                    });
-                            }}>Unfollow</Button>
-                            : <Button variant="primary" onClick={() => {
-                                
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                        withCredentials: true,
-                                        headers: {"API-KEY": "877ec7b8-009a-44b1-9f94-b4b8ea47f202"}
-                                    })
-                                    .then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            props.follow(u.id);
-                                        };
-                                    });
-
-                            }}>Follow</Button>}
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                onClick={() => { props.follow(u.id) }}
+                            >Follow</button>}
                     </div>
                 </span>
                 <span>
