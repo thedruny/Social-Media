@@ -3,8 +3,6 @@ import s from './Users.module.css';
 import userDefaultPhoto from '../../assets/image/user-man.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import * as axios from "axios";
-import { usersAPI } from '../../api/api';
 
 let Users = (props) => {
 
