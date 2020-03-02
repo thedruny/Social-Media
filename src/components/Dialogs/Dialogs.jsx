@@ -1,12 +1,15 @@
 import React from 'react';
-import s from './Dialogs.module.css'
+import s from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
 import Message from './Message/Message';
 import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../utils/validators';
-import { Textarea } from '../common/FormsControls/FormsControls';
+import { Element } from '../common/FormsControls/FormsControls';
+import { Button } from 'react-bootstrap';
 
 const maxLength50 = maxLengthCreator(50);
+const Textarea = Element('textarea');
+
 
 const Dialogs = (props) => {
 
@@ -33,16 +36,12 @@ const Dialogs = (props) => {
 
 const AddMessageForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} className={s.addMessageItem}>
             <div>
-                <Field
-                    component={Textarea}
-                    placeholder="Ender your message"
-                    name="newMessageBody"
-                    validate={[required, maxLength50]} />
+                <Field component={Textarea} placeholder="Ender your message" name="newMessageBody" validate={[required, maxLength50]} />
             </div>
             <div>
-                <button>Send</button>
+                <Button variant="primary" type="submit">Send</Button>
             </div>
         </form>
     )

@@ -3,6 +3,8 @@ import s from './Users.module.css';
 import userDefaultPhoto from '../../assets/image/user-man.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
 
 let Users = (props) => {
 
@@ -31,13 +33,13 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button disabled={props.followingInProgress.some(id => id === u.id)}
+                            ? <Button variant="danger" disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.unfollow(u.id) }}
-                            >Unfollow</button>
+                            >Unfollow</Button>
 
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                            : <Button variant="primary" disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.follow(u.id) }}
-                            >Follow</button>}
+                            >Follow</Button>}
                     </div>
                 </span>
                 <span>
