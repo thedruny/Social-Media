@@ -4,7 +4,8 @@ import Post from './Post/Post';
 import { reduxForm, Field } from 'redux-form';
 import { required, maxLengthCreator } from '../../../utils/validators';
 import { Element } from '../../common/FormsControls/FormsControls';
-import { Button } from 'react-bootstrap';
+import { Button } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 
 const maxLength10 = maxLengthCreator(10);
 const Textarea = Element('textarea')
@@ -36,7 +37,7 @@ const AddNewPostForm = (props) => {
                 <Field component={Textarea} placeholder='Post message' name='newPostText' validate={[required, maxLength10]} />
             </div>
             <div>
-                <Button variant="primary" type="submit">Add Post </Button >
+                <Button color='blue' type='submit'>Add Post </Button >
             </div>
         </form >
     )

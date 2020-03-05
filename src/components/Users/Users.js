@@ -3,7 +3,8 @@ import s from './Users.module.css';
 import userDefaultPhoto from '../../assets/image/user-man.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button } from 'semantic-ui-react';
+import './../../App'
 
 
 let Users = (props) => {
@@ -15,7 +16,7 @@ let Users = (props) => {
         pages.push(i)
     }
 
-    return < div >
+    return < div className='form-container'>
         <div>
             {pages.map(p => {
                 return <span className={props.currentPage === p && s.selectedPages}
@@ -33,11 +34,11 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <Button variant="danger" disabled={props.followingInProgress.some(id => id === u.id)}
+                            ? <Button color='grey' disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.unfollow(u.id) }}
                             >Unfollow</Button>
 
-                            : <Button variant="primary" disabled={props.followingInProgress.some(id => id === u.id)}
+                            : <Button color='teal' disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.follow(u.id) }}
                             >Follow</Button>}
                     </div>

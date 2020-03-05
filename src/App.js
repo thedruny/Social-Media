@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import Navbar from './components/Nav/Navbar';
+import './App.css'
 import News from './components/News/News';
 import { Route, withRouter } from 'react-router-dom';
 import Music from './components/Music/Music';
@@ -27,7 +27,7 @@ class App extends Component {
     } return (
       <div className="app-wrapper" >
         <HeaderContainer />
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="app-wrapper-content">
           <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />

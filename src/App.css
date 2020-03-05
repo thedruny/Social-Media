@@ -1,18 +1,20 @@
-.app-wrapper {
-  margin: 0 auto;
-  display: grid;
-  width: 1200px;
-  grid-template-areas:
-  "h h"
-  "n c";
-
-   grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    /* grid-gap: 10px; */
-
-}
-
-.app-wrapper-content {
-    grid-area: c;
-    background-color: #F9F9F9;
-}
+.App {
+    text-align: center;
+  }
+  
+  .page-title {
+    display: block !important;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  
+  .form-container {
+    width: 400px;
+    margin: auto;
+  }
+  
+  .ui.teal.button:focus,
+  .ui.teal.buttons .button:focus {
+    background-color: #00b5ad;
+  }

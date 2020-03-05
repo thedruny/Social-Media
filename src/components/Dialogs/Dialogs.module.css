@@ -1,8 +1,8 @@
-.dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-}
-
+.form-container {
+    width: 400px;
+    margin: auto;
+  }
+  
 .dialogsItems {
     padding: 10px;
 }

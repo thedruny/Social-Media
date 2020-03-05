@@ -5,41 +5,32 @@ import { Element } from '../common/FormsControls/FormsControls';
 import { connect } from 'react-redux';
 import { login } from './../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
-import styles from './../common/FormsControls/FormsControls.module.css'
+import styles from './../common/FormsControls/FormsControls.module.css';
+import { Button, Form } from 'semantic-ui-react'
 
 const Input = Element('input');
 
 let LoginForm = (props) => {
       return (
-            <form onSubmit={props.handleSubmit}>
+            <Form onSubmit={props.handleSubmit} >
+                  <h4>Login form</h4>
                   <div>
-                        <Field placeholder={'Email'}
-                              name={'email'}
-                              component={Input}
-                              validate={[required]} />
+                        <Field label="Username" placeholder={'Email'} name={'email'} component={Input} validate={[required]} />
                   </div>
                   <div>
-                        <Field
-                              placeholder='Password'
-                              name={'password'}
-                              component={Input}
-                              validate={[required]} />
+                        <Field placeholder='Password' name={'password'} component={Input} validate={[required]} />
                   </div>
                   <div>
-                        <Field
-                              name={'rememberMe'}
-                              type={'checkbox'}
-                              component={Input}
-                              validate={[required]} />
+                        <Field name={'rememberMe'} type={'checkbox'} component={Input} validate={[required]} />
                   </div>
                   {props.error && <div className={styles.formSummaryError}>
                         {props.error}
                   </div>
                   }
                   <div>
-                        <button>Login</button>
+                        <Button type='submit' color='blue'>Login</Button>
                   </div>
-            </form >
+            </Form >
       )
 };
 
@@ -53,7 +44,7 @@ let Login = (props) => {
                   <Redirect to='/profile' />
             )
       } else {
-            return <div>
+            return <div className="form-container">
                   <h1>Login</h1>
                   <LoginReduxForm onSubmit={onSubmit} />
             </div>
