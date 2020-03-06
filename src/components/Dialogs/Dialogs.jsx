@@ -5,7 +5,7 @@ import Message from './Message/Message';
 import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../utils/validators';
 import { Element } from '../common/FormsControls/FormsControls';
-import { Button, Input } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import './../../App'
 
 const maxLength50 = maxLengthCreator(50);

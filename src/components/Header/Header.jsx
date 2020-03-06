@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 export default class MenuHeader extends Component {
@@ -12,7 +12,7 @@ export default class MenuHeader extends Component {
     render() {
         const { activeItem } = this.state
         return (
-            <Menu pointing secondary size="massive" color="teal">
+            <Menu pointing secondary size="massive" color="teal" >
                 <Menu.Item
                     name='Profile'
                     active={activeItem === 'profile'}

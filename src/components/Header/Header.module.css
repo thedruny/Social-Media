@@ -1,20 +1,3 @@
 .header {
-    grid-area: h;
-    background-color: green;
-    height: 30;
-    width: 30;
-    alt: logo;
-  }
-  .header img {
-    width: 100px;
-  }
-
-
-  .loginBlock {
-    float: right;
-    padding: 10px;
-  }
-  
-  .loginBlock a {
-    color: white;
+  width: calc(100% - 300px);
   }

@@ -5,12 +5,11 @@ import { reduxForm, Field } from 'redux-form';
 import { required, maxLengthCreator } from '../../../utils/validators';
 import { Element } from '../../common/FormsControls/FormsControls';
 import { Button } from 'semantic-ui-react'
-import { Input } from 'semantic-ui-react'
 
 const maxLength10 = maxLengthCreator(10);
 const Textarea = Element('textarea')
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
     let postsElements =
         props.posts.map(p => <Post massage={p.message} likesCont={p.likesCount} />)
 
@@ -27,7 +26,7 @@ const MyPosts = (props) => {
             </div>
         </div >
     )
-};
+});
 
 
 const AddNewPostForm = (props) => {

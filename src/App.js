@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './components/Nav/Navbar';
 import './App.css'
 import News from './components/News/News';
 import { Route, withRouter } from 'react-router-dom';
@@ -14,6 +13,7 @@ import { initializeApp } from './redux/app-reducer'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
 
@@ -27,7 +27,6 @@ class App extends Component {
     } return (
       <div className="app-wrapper" >
         <HeaderContainer />
-        {/* <Navbar /> */}
         <div className="app-wrapper-content">
           <Route path='/dialogs' render={() => <DialogsContainer />} />
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
