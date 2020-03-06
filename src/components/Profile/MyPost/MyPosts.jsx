@@ -10,8 +10,7 @@ const maxLength10 = maxLengthCreator(10);
 const Textarea = Element('textarea')
 
 const MyPosts = React.memo((props) => {
-    let postsElements =
-        props.posts.map(p => <Post massage={p.message} likesCont={p.likesCount} />)
+    let postsElements = props.posts.map(post => <Post massage={post.message} likesCont={post.likesCount} key={post.id} />).reverse();
 
     let onAddPost = (values) => {
         props.addPost(values.newPostText)
