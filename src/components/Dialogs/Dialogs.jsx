@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import DialogsItem from './DialogsItem/DialogsItem';
-import Message from './Message/Message';
+import DialogsUserItem from './DialogsUserItem/DialogsUserItem';
+import DialogsMessage from './Message/DialogsMessage';
 import { Field, reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../utils/validators';
 import { Element } from '../common/FormsControls/FormsControls';
@@ -14,8 +14,8 @@ const Textarea = Element('textarea');
 const Dialogs = (props) => {
 
     let state = props.dialogsPage;
-    let dialogsElements = state.dialogs.map(d => <DialogsItem name={d.name} key={d.id} id={d.id} />).reverse();
-    let messagesElements = state.messages.map(m => <Message message={m.message} key={m.id} />).reverse();
+    let dialogsElements = state.dialogs.map(d => <DialogsUserItem name={d.name} key={d.id} id={d.id} />).reverse();
+    let messagesElements = state.messages.map(m => <DialogsMessage message={m.message} key={m.id} />).reverse();
 
     let addNewMessage = (values) => {
         props.sendMessage(values.newMessageBody)

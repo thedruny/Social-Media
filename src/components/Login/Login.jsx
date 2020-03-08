@@ -1,7 +1,7 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { required } from '../../utils/validators';
-import { Element } from '../common/FormsControls/FormsControls';
+import { Element, createField } from '../common/FormsControls/FormsControls';
 import { connect } from 'react-redux';
 import { login } from './../../redux/auth-reducer';
 import { Redirect } from 'react-router-dom';
@@ -10,26 +10,23 @@ import { Button, Form } from 'semantic-ui-react'
 
 const Input = Element('input');
 
-let LoginForm = (props) => {
+let LoginForm = ({ handleSubmit, error }) => {
       return (
-            <Form onSubmit={props.handleSubmit} >
-                  <h4>Login form</h4>
-                  <div>
-                        <Field label="Username" placeholder={'Email'} name={'email'} component={Input} validate={[required]} />
-                  </div>
-                  <div>
-                        <Field placeholder='Password' name={'password'} component={Input} validate={[required]} />
-                  </div>
-                  <div>
-                        <Field name={'rememberMe'} type={'checkbox'} component={Input} validate={[required]} />
-                  </div>
-                  {props.error && <div className={styles.formSummaryError}>
-                        {props.error}
+            <Form onSubmit={handleSubmit}>
+                  <Form.Field>
+                        <label>Login</label>
+                        {createField('Email', 'email', [required], Input)}
+                  </Form.Field>
+                  <Form.Field >
+                        <label>Password</label>
+                        {createField('Password', 'password', [required], Input, { type: 'password' })}
+                  </Form.Field>
+                  {error && <div className={styles.formSummaryError}>
+                        {error}
                   </div>
                   }
-                  <div>
-                        <Button type='submit' color='blue'>Login</Button>
-                  </div>
+                  <Button type="submit" color='blue'>Login</Button>
+
             </Form >
       )
 };
