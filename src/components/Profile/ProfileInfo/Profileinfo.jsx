@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Profileinfo.module.css'
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import userDefaultPhoto from './../../../assets/image/user-man.png'
 
 const ProfileInfo = ({ profile, status, updateStatus }) => {
 
@@ -11,7 +12,7 @@ const ProfileInfo = ({ profile, status, updateStatus }) => {
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <img src={profile.photos.large} />
+                <img src={profile.photos.large || userDefaultPhoto} />
                 <h3>Profile Status</h3>
                 <ProfileStatusWithHooks
                     status={status}
