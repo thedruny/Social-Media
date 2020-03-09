@@ -1,0 +1,1 @@
+{"version":3,"sources":["Paginator.module.css","Users.module.css"],"names":[],"mappings":"AAAA,gCACM,eACJ,CCFF,qBACI,UACJ,CAEA,yBACI,YACJ","file":"4.9bac14dc.chunk.css","sourcesContent":[".selectedPages {\r\n      font-weight: bold;\r\n  }",".avatar {\r\n    width: 75px;\r\n}\r\n\r\n.postsBlock {\r\n    padding: 10px;\r\n}\r\n"]}
