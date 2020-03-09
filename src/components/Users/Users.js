@@ -2,13 +2,14 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User';
+import { Pagination } from 'semantic-ui-react';
 
 
 let Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props }) => {
     return <div>
         <Paginator currentPage={currentPage}
             onPageChanged={onPageChanged}
-            totalUsersCount={totalUsersCount}
+            totalItemsCount={totalUsersCount}
             pageSize={pageSize} />
         <div>
             {
