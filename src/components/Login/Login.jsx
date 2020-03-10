@@ -25,7 +25,7 @@ let LoginForm = ({ handleSubmit, error }) => {
                         {error}
                   </div>
                   }
-                  <Button type="submit" color='blue'>Login</Button>
+                  <Button color='blue'>Login</Button>
 
             </Form >
       )

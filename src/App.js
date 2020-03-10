@@ -23,13 +23,13 @@ class App extends Component {
     if (!this.props.initialized) {
       return <Preloader />
     } return (
-      <div className="app-wrapper" >
+      <div className='body'>
         <HeaderContainer />
-        <div className="app-wrapper-content">
+        <div>
           <Suspense fallback={<Preloader />}>
             <Route path='/dialogs' render={() => <DialogsContainer />} />
-            <Route path='/login' render={() => <Login />} />
             <Route path='/users' render={() => <UsersContainer />} />
+            <Route path='/login' render={() => <Login />} />
           </Suspense>
           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
         </div>

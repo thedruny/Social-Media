@@ -3,11 +3,11 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post';
 import { reduxForm, Field } from 'redux-form';
 import { required, maxLengthCreator } from '../../../utils/validators';
-import { Element } from '../../common/FormsControls/FormsControls';
-import { Button } from 'semantic-ui-react'
+import { Element, createField } from '../../common/FormsControls/FormsControls';
+import { Button, Message, Form } from 'semantic-ui-react'
 
 const maxLength10 = maxLengthCreator(10);
-const Textarea = Element('textarea')
+const Input = Element('input')
 
 const MyPosts = React.memo((props) => {
     let postsElements = props.posts.map(post => <Post massage={post.message} likesCont={post.likesCount} key={post.id} />).reverse();
@@ -18,7 +18,6 @@ const MyPosts = React.memo((props) => {
 
     return (
         <div className={s.postsBlock}>
-            <h3>My post</h3>
             <AddNewPostReduxForm onSubmit={onAddPost} />
             <div className={s.posts}>
                 {postsElements}
@@ -30,14 +29,13 @@ const MyPosts = React.memo((props) => {
 
 const AddNewPostForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={Textarea} placeholder='Post message' name='newPostText' validate={[required, maxLength10]} />
-            </div>
-            <div>
-                <Button color='blue' type='submit'>Add Post </Button >
-            </div>
-        </form >
+        <Form onSubmit={props.handleSubmit}>
+            <h2>Create a post:</h2>
+            <Form.Field>
+                {createField('Hi world!', 'newPostText', [required, maxLength10], Input)}
+            </Form.Field >
+            <Button color='teal'>Add Post </Button >
+        </Form >
     )
 };
 

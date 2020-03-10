@@ -1,26 +1,26 @@
-.App {
-    text-align: center;
-  }
-  
-  .page-title {
-    display: block !important;
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 10px;
-  }
-  
-  .form-container {
-    width: 400px;
-    margin: auto;
-  }
-  
-  .ui.teal.button:focus,
-  .ui.teal.buttons .button:focus {
-    background-color: #00b5ad;
-  }
+body{
+  margin-left: auto;
+    margin-right: auto;
+    width:1200px;
 
-  .ui-container {
-    width: calc(100% - 300px);
-    margin-left: auto!important;
-    margin-right: auto!important;
-  }
+}
+.App {
+      text-align: center;
+    }
+    
+    .page-title {
+      display: block !important;
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+    
+    .form-container {
+      width: 400px;
+      margin: auto;
+    }
+    
+    .ui.teal.button:focus,
+    .ui.teal.buttons .button:focus {
+      background-color: #00b5ad;
+    }

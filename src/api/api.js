@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const instance = axios.create({
       withCredentials: true,
-      baseURL: "https://social-network.samuraijs.com/api/1.0/",
-      headers: { "API-KEY": "877ec7b8-009a-44b1-9f94-b4b8ea47f202" },
+      baseURL: "https://social-network.samuraijs.com/api/1.0",
+      headers: { "API-KEY": "e1f41f57-4d59-4c2f-b0f4-56384be5a404" },
 })
 
 export const usersAPI = {
@@ -23,7 +23,7 @@ export const usersAPI = {
       getProfile(userId) {
             console.warn('Obsolete method. Please use profileAPI object.')
             return profileAPI.getProfile(userId)
-      }
+      },
 };
 
 export const profileAPI = {
@@ -36,6 +36,15 @@ export const profileAPI = {
       updateStatus(status) {
             return instance.put(`profile/status`, {
                   status: status
+            })
+      },
+      savePhoto(photoFile) {
+            const formData = new FormData();
+            formData.append("image", photoFile);
+            return instance.put(`profile/photo`, formData, {
+                  headers: {
+                        'Content-Type': 'multipart/form-data'
+                  }
             })
       }
 };
