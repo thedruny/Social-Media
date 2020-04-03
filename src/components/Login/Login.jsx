@@ -26,7 +26,6 @@ let LoginForm = ({ handleSubmit, error }) => {
                   </div>
                   }
                   <Button color='blue'>Login</Button>
-
             </Form >
       )
 };
@@ -41,7 +40,7 @@ let Login = (props) => {
                   <Redirect to='/profile' />
             )
       } else {
-            return <div className="form-container">
+            return <div className={styles.formContainer}>
                   <h1>Login</h1>
                   <LoginReduxForm onSubmit={onSubmit} />
             </div>
@@ -52,6 +51,6 @@ const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
 const mapStateToProps = (state) => ({
       isAuth: state.auth.isAuth
-})
+});
 
-export default connect(mapStateToProps, { login })(Login); 
+export default connect(mapStateToProps, { login })(Login);

@@ -23,15 +23,15 @@ class App extends Component {
     if (!this.props.initialized) {
       return <Preloader />
     } return (
-      <div className='body'>
+      <div className='container'>
         <HeaderContainer />
-        <div>
+        <div className='mt-5'>
           <Suspense fallback={<Preloader />}>
             <Route path='/dialogs' render={() => <DialogsContainer />} />
             <Route path='/users' render={() => <UsersContainer />} />
             <Route path='/login' render={() => <Login />} />
           </Suspense>
-          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+          <Route path={['/profile/:userId?', '/max']} render={() => <ProfileContainer />} />
         </div>
       </div>
     );

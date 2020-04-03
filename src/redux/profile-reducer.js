@@ -1,4 +1,5 @@
 import { usersAPI, profileAPI } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'social-network/profile/ADD-POST';
 const SET_USER_PROFILE = 'social-network/profile/SET_USER_PROFILE';
@@ -48,7 +49,6 @@ const profileReducer = (state = initialState, action) => {
                 posts: state.posts.filter(post => post.id !== action.postId)
             }
         case SAVE_PHOTO_SUCCESS:
-            debugger;
             return {
                 ...state,
                 profile: { ...state.profile, photos: action.photos }
@@ -87,6 +87,27 @@ export const savePhoto = (file) => async (dispatch) => {
     const response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+};
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    const response = await profileAPI.saveProfile(profile);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId))
+    } else {
+        let wrongNetwork = response.data.messages[0]
+            .slice(
+                response.data.messages[0].indexOf(">") + 1,
+                response.data.messages[0].indexOf(")")
+            )
+            .toLocaleLowerCase();
+        dispatch(
+            stopSubmit("profile-edit", {
+                contacts: { [wrongNetwork]: response.data.messages[0] }
+            })
+        );
+        return Promise.reject(response.data.messages[0]);
     }
 };
 

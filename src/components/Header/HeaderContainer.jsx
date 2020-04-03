@@ -6,7 +6,9 @@ import { logout } from '../../redux/auth-reducer';
 class HeaderContainer extends React.Component {
 
     render() {
-        return <Header {...this.props} />
+        return <div className='col-12'>
+            <Header {...this.props} />
+        </div>
     }
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import s from './Preloader.module.css'
+import { Dimmer, Loader } from 'semantic-ui-react';
 
 
 
 let Preloader = (props) => {
-    return <div className={s.preloader}>
-        <div className={s.spinner}></div>
-    </div>
+    return <Dimmer active inverted>
+        <Loader size='large'>Loading</Loader>
+    </Dimmer>
 }
 
 export default Preloader;

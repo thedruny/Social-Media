@@ -6,10 +6,10 @@ let initialState = {
         { id: 2, name: 'Kolya' }
     ],
     messages: [
-        { id: 1, message: 'Hi' },
-        { id: 2, message: 'How are u' },
-        { id: 3, message: 'Smile' },
-        { id: 4, message: 'Lol' }
+        { id: 1, message: 'Hello my friends!' },
+        { id: 2, message: 'This is another post.' },
+        { id: 3, message: 'Hi, how are you, Zach?' },
+        { id: 4, message: 'New message text for post.' }
     ]
 };
 

@@ -7,31 +7,29 @@ import { Button, Card, Image } from 'semantic-ui-react';
 
 let User = ({ user, ...props }) => {
     return (
-        <Card.Group>
-            <Card>
-                <Card.Content>
-                    <Image
-                        as={NavLink}
-                        to={'/profile/' + user.id}
-                        floated='right'
-                        size='mini'
-                        src={user.photos.small != null ? user.photos.small : userDefaultPhoto} />
-                    <Card.Header>{user.name}</Card.Header>
-                    <Card.Meta>{user.status || 'No status'}</Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                    <div className='ui two buttons'>
-                        {user.followed
-                            ? <Button disabled={props.followingInProgress.some(id => id === user.id)}
-                                onClick={() => { props.unfollow(user.id) }}>
-                                Unfollow</Button>
-                            : <Button basic color='green' disabled={props.followingInProgress.some(id => id === user.id)}
-                                onClick={() => { props.follow(user.id) }}>
-                                Follow</Button>}
-                    </div>
-                </Card.Content>
-            </Card>
-        </Card.Group>
+        <Card>
+            <Card.Content>
+                <Image
+                    as={NavLink}
+                    to={'/profile/' + user.id}
+                    floated='right'
+                    size='mini'
+                    src={user.photos.small != null ? user.photos.small : userDefaultPhoto} />
+                <Card.Header>{user.name}</Card.Header>
+                <Card.Meta>{user.status || 'No status'}</Card.Meta>
+            </Card.Content>
+            <Card.Content extra>
+                <div className='ui two buttons'>
+                    {user.followed
+                        ? <Button disabled={props.followingInProgress.some(id => id === user.id)}
+                            onClick={() => { props.unfollow(user.id) }}>
+                            Unfollow</Button>
+                        : <Button color='teal' disabled={props.followingInProgress.some(id => id === user.id)}
+                            onClick={() => { props.follow(user.id) }}>
+                            Follow</Button>}
+                </div>
+            </Card.Content>
+        </Card>
     )
 }
 export default User;

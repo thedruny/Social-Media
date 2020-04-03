@@ -21,7 +21,7 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged, portio
 
 
         {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber).map((p) => {
-            return <span className={currentPage === p && styles.selectedPages}
+            return <span className={`budge budge-light ${currentPage === p && styles.selectedPages}`}
                 onClick={(e) => { onPageChanged(p) }}>{p}</span>
         })}
         {portionCount > portionNumber &&

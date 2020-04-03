@@ -7,7 +7,7 @@ import { Element, createField } from '../../common/FormsControls/FormsControls';
 import { Button, Message, Form } from 'semantic-ui-react'
 
 const maxLength10 = maxLengthCreator(10);
-const Input = Element('input')
+const Input = Element('textarea')
 
 const MyPosts = React.memo((props) => {
     let postsElements = props.posts.map(post => <Post massage={post.message} likesCont={post.likesCount} key={post.id} />).reverse();

@@ -1,7 +1,27 @@
-.avatar {
-    width: 75px;
-}
-
 .postsBlock {
     padding: 10px;
 }
+
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 1em;
+    grid-auto-rows: minmax(50px, auto);
+}
+
+/* .firstItem {
+    background-color: aqua;
+    grid-gap: 1em;
+}
+
+.secondItem {
+    background-color: blue;
+    justify-items: center;
+    
+}
+
+.thirdItem {
+    background-color: green;
+} */
